@@ -1,3 +1,16 @@
 <h1>Artist Show Page</h1>
 
-<%= @artist.name %>
+<h2><%= @artist.name %></h2>
+<p><%= image_tag @artist.image.thumbnail %></p>
+
+<ul>
+<% @artist.songs.each do |song| %>
+  <li><%= song.name %> <%= link_to "[Delete]", artist_song_path(@artist, song), method: :delete, data: { confirm: "Are you sure?" } %></li>
+<% end %>
+</ul>
+
+<%= render '/songs/song' %>
+
+<hr>
+
+<div><%= link_to "[Back to artist overview page]", root_path %> <%= link_to "[Delete artist]", artist_path(@artist), method: :delete, data: { confirm: "Are you sure?" } %></div>

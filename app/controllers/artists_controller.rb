@@ -8,13 +8,14 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @song = Song.new
   end
 
   def create
     @artist = Artist.new(artist_params)
     @artist.save
 
-    redirect_to artists_path(@artist)
+    redirect_to root_path
   end
 
   def destroy
